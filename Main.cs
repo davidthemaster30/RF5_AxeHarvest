@@ -22,11 +22,31 @@ namespace RF5_AxeHarvest
 		#endregion
 
 		public static new ManualLogSource Log;
+		public static HashSet<CropID> TreeCropIds;
 
 		public override void Load()
 		{
 			Log = base.Log;
+			SetupTreeCropIds();
 			new Harmony(GUID).PatchAll();
+		}
+
+		private void SetupTreeCropIds()
+		{
+			TreeCropIds = new HashSet<CropID> {
+				CropID.CROP_GLITTERTREE,
+				CropID.CROP_GLITTERTREE_BIG,
+				CropID.CROP_GLITTERTREE_KING,
+				CropID.CROP_APPLETREE,
+				CropID.CROP_APPLETREE_BIG,
+				CropID.CROP_APPLETREE_KING,
+				CropID.CROP_ORANGETREE,
+				CropID.CROP_ORANGETREE_BIG,
+				CropID.CROP_ORANGETREE_KING,
+				CropID.CROP_GRAPETREE,
+				CropID.CROP_GRAPETREE_BIG,
+				CropID.CROP_GRAPETREE_KING
+			};
 		}
 	}
 }
