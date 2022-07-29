@@ -12,6 +12,12 @@ namespace RF5_AxeHarvest
 	{
 		static bool Prefix(Farm.CellController __instance, ref bool __result)
 		{
+			if (!__instance.plantStatus.IsPlanted)
+			{
+				__result = false;
+				return false;
+			}
+
 			__result = __instance.plantStatus.PlantStatusLevel > 0 && Main.TreeCropIds.Contains((CropID)__instance.CropData.CropID);
 			__result = __result || __instance.plantStatus.IsStatusMax();
 			return false;

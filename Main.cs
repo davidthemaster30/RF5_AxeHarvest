@@ -17,7 +17,7 @@ namespace RF5_AxeHarvest
 		#region PluginInfo
 		private const string GUID = "34A85B08-B01E-B507-8262-32619D84AA37";
 		private const string NAME = "RF5_AxeHarvest";
-		private const string VERSION = "1.0";
+		private const string VERSION = "1.0.1";
 		private const string GAME_PROCESS = "Rune Factory 5.exe";
 		#endregion
 
