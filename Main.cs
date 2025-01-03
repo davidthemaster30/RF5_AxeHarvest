@@ -1,39 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BepInEx;
-using HarmonyLib;
-using BepInEx.IL2CPP;
+﻿using BepInEx;
 using BepInEx.Logging;
+using BepInEx.Unity.IL2CPP;
+using HarmonyLib;
 
-namespace RF5_AxeHarvest
+namespace RF5_AxeHarvest;
+
+[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+[BepInProcess(GAME_PROCESS)]
+public class Main : BasePlugin
 {
-	[BepInPlugin(GUID, NAME, VERSION)]
-	[BepInProcess(GAME_PROCESS)]
-	public class Main : BasePlugin
+	public static new ManualLogSource Log;
+	public static HashSet<CropID> TreeCropIds;
+	private const string GAME_PROCESS = "Rune Factory 5.exe";
+
+	public override void Load()
 	{
-		#region PluginInfo
-		private const string GUID = "34A85B08-B01E-B507-8262-32619D84AA37";
-		private const string NAME = "RF5_AxeHarvest";
-		private const string VERSION = "1.0.1";
-		private const string GAME_PROCESS = "Rune Factory 5.exe";
-		#endregion
+		Log = base.Log;
+		SetupTreeCropIds();
+		new Harmony(MyPluginInfo.PLUGIN_GUID).PatchAll();
+	}
 
-		public static new ManualLogSource Log;
-		public static HashSet<CropID> TreeCropIds;
-
-		public override void Load()
-		{
-			Log = base.Log;
-			SetupTreeCropIds();
-			new Harmony(GUID).PatchAll();
-		}
-
-		private void SetupTreeCropIds()
-		{
-			TreeCropIds = new HashSet<CropID> {
+	private void SetupTreeCropIds()
+	{
+		TreeCropIds = new HashSet<CropID> {
 				CropID.CROP_GLITTERTREE,
 				CropID.CROP_GLITTERTREE_BIG,
 				CropID.CROP_GLITTERTREE_KING,
@@ -47,6 +36,5 @@ namespace RF5_AxeHarvest
 				CropID.CROP_GRAPETREE_BIG,
 				CropID.CROP_GRAPETREE_KING
 			};
-		}
 	}
 }
