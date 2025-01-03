@@ -10,7 +10,7 @@ namespace RF5_AxeHarvest;
 public class Main : BasePlugin
 {
 	public static HashSet<CropID> TreeCropIds;
-	internal static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("AutoFishing");
+	internal static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("AxeHarvest");
 	private const string GAME_PROCESS = "Rune Factory 5.exe";
 
 	public override void Load()
