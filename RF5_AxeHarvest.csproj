@@ -5,7 +5,7 @@
     <Description>RF5_AxeHarvest</Description>
     <Product>RF5_AxeHarvest</Product>
     <Company>https://github.com/davidthemaster30/RF5_AxeHarvest</Company>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RootNamespace>RF5_AxeHarvest</RootNamespace>
